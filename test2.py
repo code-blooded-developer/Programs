@@ -1,3 +1,10 @@
+def primes(n):
+    sieve = [True] * n
+    for i in xrange(3,int(n**0.5)+1,2):
+        if sieve[i]:
+            sieve[i*i::2*i]=[False]*((n-i*i-1)/(2*i)+1)
+    return [2] + [i for i in xrange(3,n,2) if sieve[i]]
+
 tc = int(input())
 
 while tc > 0:
@@ -5,10 +12,11 @@ while tc > 0:
 
     n = int(input())
 
-    count = 0
+    primes = primes(n+1)
 
-    while n:
-        n = n & (n-1)
-        count += 1
+    sum = 0
 
-    print(count)
+    for prime in primes:
+        sum = sum + prime
+
+    print(sum)
