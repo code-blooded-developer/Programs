@@ -1,4 +1,3 @@
-from math import pow
 tc = int(input())
 
 while tc > 0:
